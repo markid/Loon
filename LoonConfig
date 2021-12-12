@@ -1,0 +1,91 @@
+[General]
+ipv6 = false
+skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,e.crashlynatics.com
+bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.18.0.0/15,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32
+dns-server = system,
+allow-udp-proxy = false
+allow-wifi-access = true
+wifi-access-http-port = 7222
+wifi-access-socket5-port = 7221
+proxy-test-url = http://gstatic.com/generate_204/
+test-timeout = 3
+
+[Proxy]
+
+[Remote Proxy]
+AMY = https://sub.store/download/Amy,udp=true,fast-open=false,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Amy.png
+
+TAG = https://sub.store/download/TAG,udp=true,fast-open=false,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TAG.png
+
+[Remote Filter]
+香港节点 = NameRegex, FilterKey = "^(?!.*?(游戏|实验)).*香港"
+日本节点 = NameRegex, FilterKey = "^(?!.*?(游戏|实验)).*日本"
+新加坡节点 = NameRegex, FilterKey = "新加坡"
+台湾节点 = NameRegex, FilterKey = "台湾"
+美国节点 = NameRegex, FilterKey = "美国"
+低价区节点 = NameRegex, FilterKey = "^(?!.*?(白俄罗斯)).*(阿根廷|土耳其|俄罗斯|菲律宾|巴西|购物).*"
+其他地区节点 = NameRegex, FilterKey = "^(?!.*?(游戏|港|台湾|狮城|坡|日本|美国|阿根廷|土耳其|俄罗斯|菲律宾|巴西|购物)).*$|^.*白俄罗斯.*$"
+
+[Proxy Group]
+Auto = url-test,香港节点,url = http://www.qualcomm.cn/generate_204,interval = 60,tolerance = 10,img-url = https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+香港 = select,香港节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+日本 = select,日本节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+新加坡 = select,新加坡节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+台湾 = select,台湾节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
+美国 = select,美国节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+Bilibili = select,DIRECT,香港,台湾,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili_3.png
+低价购物 = select,低价区节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taobao.png
+其他地区 = select,其他地区节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/World_Map.png
+Netflix = select,香港,日本,新加坡,台湾,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+Tiktok = select,DIRECT,日本,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok_1.png
+Apple = select,DIRECT,香港,日本,台湾,美国,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_2.png
+Steam = select,DIRECT,香港,美国,低价购物,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png
+Telegram = select,香港,新加坡,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+
+[Rule]
+#Type:DOMAIN-SUFFIX,DOMAIN,DOMAIN-KEYWORD,USER-AGENT,URL-REGEX,IP-CIDR
+#Strategy:DIRECT,PROXY,REJECT
+#Options:no-resolve(only for cidr)
+
+GEOIP,cn,DIRECT
+FINAL,香港
+
+[Remote Rule]
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Advertising/Advertising.list, policy=REJECT, tag=Advertising, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/BiliBili/BiliBili.list, policy=Bilibili, tag=Bilibili, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Bahamut/Bahamut.list, policy=台湾, tag=Bahamut, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Disney/Disney.list, policy=Netflix, tag=Disney, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Steam/Steam.list, policy=Steam, tag=Steam, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Telegram/Telegram.list, policy=Telegram, tag=Telegram, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Twitter/Twitter.list, policy=日本, tag=Twitter, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/TikTok/TikTok.list, policy=TikTok, tag=TikTok, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Instagram/Instagram.list, policy=日本, tag=Instagram, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Spotify/Spotify.list, policy=Auto, tag=Spotify, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/YouTube/YouTube.list, policy=Auto, tag=YouTube, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Porn.list, policy=Auto, tag=Pornhub, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Apple/Apple.list, policy=Apple, tag=Apple, enabled=true
+
+[URL Rewrite]
+enable = false
+
+[Remote Rewrite]
+
+[Script]
+
+[Remote Script]
+
+[Plugin]
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/Loon/Advertising/Advertising.plugin, tag=AdBlock, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/Loon/Redirect/Redirect.plugin, tag=Redirect, enabled=true
+https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.loon.tf.plugin, tag=Boxjs, enabled=true
+https://raw.githubusercontent.com/Peng-YM/Sub-Store/master/config/Loon.plugin, tag=Sub-Store, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/bilibili/bilibili_plus.lnplugin, tag=B站助手, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.lnplugin, tag=知乎助手, enabled=true
+https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Loon/TikTokJP.plugin, tag=Tiktok日本, enabled=true
+https://raw.githubusercontent.com/123456qewret/Loon/main/LoonPlugin, tag=Plugin, enabled=true
+
+[Mitm]
+ca-p12 = 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
+ca-passphrase = F3H5DQ55
+hostname =
+skip-server-cert-verify = false
