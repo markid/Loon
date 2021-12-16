@@ -14,10 +14,6 @@ test-timeout = 3
 [Proxy]
 
 [Remote Proxy]
-AMY = https://sub.store/download/Amy,udp=true,fast-open=false,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Amy.png
-TAG = https://sub.store/download/TAG,udp=true,fast-open=false,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TAG.png
-EXFLUX = https://sub.store/download/EXFLUX,udp=true,fast-open=false,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Exflux.png
-YTOO = https://sub.store/download/YTOO,udp=true,fast-open=false,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/YTOO.png
 
 [Remote Filter]
 香港节点 = NameRegex, FilterKey = "^(?!.*?(游戏|实验)).*香港"
@@ -91,9 +87,11 @@ enable = false
 [Remote Rewrite]
 
 [Script]
-cron "20 */30 5-23 * * *" script-path=https://raw.githubusercontent.com/123456qewret/Youth/main/youth.js,tag=中青看点,img-url=https://raw.githubusercontent.com/Orz-3/task/master/youth.png,enabled=true
+cron "20 */30 5-23 * * *" script-path=https://raw.githubusercontent.com/123456qewret/Youth/main/youth.js, tag=中青看点
+
 
 [Remote Script]
+
 
 [Plugin]
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/Loon/Advertising/Advertising.plugin, tag=AdBlock, enabled=true
@@ -106,7 +104,5 @@ https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Loon/TikTokJP.pl
 https://raw.githubusercontent.com/123456qewret/Loon/main/LoonPlugin, tag=Plugin, enabled=true
 
 [Mitm]
-ca-p12 = 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
-ca-passphrase = F3H5DQ55
 hostname =
 skip-server-cert-verify = false
